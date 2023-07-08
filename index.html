@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caffeine</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Squada+One&display=swap" rel="stylesheet">
+</head>
+<style>
+  :root{
+    --logo: #e2dec2;
+    --logodark: #cac7ae;
+    --logodarker: #a7a58f;
+    --background: #4d6559;
+    --backgroundhvr: #7b93878e;
+    --backgroundsheet: #e6e3ce;
+  }
+  ::selection{
+    color: white;
+    background-color: none;
+  }
+  html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  .order-btn{
+    color: var(--logo);
+    border-radius: 15px;
+    border-color: var(--logodark);
+    border-width: 3px;
+  }
+  .order-btn:hover, .order-btn:active, .order-btn:focus{
+    color: var(--background)!important;
+    background-color: var(--logodark)!important;
+    border-radius: 15px;
+    border-color: var(--logodark)!important;
+    border-width: 3px;
+  }
+  .dropdown-header{
+    color: var(--logodarker);
+  }
+  .nav-link, .dropdown-item{
+    color: var(--logodark);
+  }
+  .nav-link:hover, .nav-link:active, .nav-link:focus, .dropdown-item:hover, .dropdown-item:active, .dropdown-item:focus{
+    color: var(--logo)!important;
+  }
+  .dropdown-item:hover, .dropdown-item:active{
+    background-color: var(--backgroundhvr);
+    border-radius: 5px;
+  }
+  .carousel{
+    width: min-content;
+    border: 5.5px solid var(--background);
+    /* margin-left: 2.7rem; */
+    border-radius: 20px;
+    height: max-content;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  }
+  .carousel-menu{
+    border-radius: 15px;
+    height: 23rem;
+    width: 36rem;
+  }
+  .carousel-caption > h5{
+    color: var(--logo);
+    font-weight: 600;
+    font-size: 25px;
+    text-align: center;
+    /* margin-top: -25.9rem;
+    margin-left: -6rem; */
+    font-family: 'Belanosima', sans-serif;
+  }
+  button[data-bs-target="#carousel"]{
+    border-radius: 100%;
+    margin: auto 10px!important;
+    width: 10px!important;
+    height: 10px!important;
+  }
+  button[data-bs-target="#carousel"]:enabled{
+    background-color: var(--logo);
+  }
+  .order-card{
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  }
+  .card-link, .delivery-card > h5{
+    color: var(--logo);
+  }
+  .card-link{
+    border: 3px solid var(--logodark);
+    padding: 2px 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+  }
+  .card-link:hover, .card-link:active, .card-link:focus{
+    color: var(--background)!important;
+    background-color: var(--logodark)!important;
+    border-radius: 8px;
+    border-color: var(--logodark)!important;
+    border-width: 3px;
+  }
+  .delivery-card > h6{
+    color: var(--logodark);
+  }
+  @media(min-width: 1024px){
+    .dropdown:hover .dropdown-menu{
+      display: block;
+      margin-top: 0;
+    }
+  }
+  .outlet-drop, .contact-drop{
+    color: var(--logodark);
+    font-family: 'Belanosima', sans-serif;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .outlet-drop:hover, .outlet-drop:active, .outlet-drop:focus, .contact-drop:hover, .contact-drop:active, .contact-drop:focus{
+    color: var(--logo)!important;
+  }
+  .outlet-drop-list{
+    color: var(--logodark);
+    font-family: 'Belanosima', sans-serif;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  .outlet-drop-menu{
+    height: max-content;
+    background-color: var(--background);
+    border: 1px solid var(--logo);
+  }
+  @media(min-width: 1310px){
+     .products-con{
+      margin-left: 2rem;
+     }
+  }
+  @media(max-width: 1245px){
+     .products-row .col-lg-6{
+      width: 100%;
+     }
+     .products-title{
+      margin-top: 2rem;
+      display: flex;
+      justify-self: center;
+      text-align: center;
+    }
+    .products-subtitle{
+      text-align: center;
+    }
+    .products-price{
+      text-align: end;
+    }
+  }
+  @media(max-width: 990px){ 
+    .footer-title{
+      margin-top: 1rem;
+    }
+  }
+  @media(max-width: 660px){
+     .carousel-item img{
+      max-width: 20rem;
+      max-height: 15rem;
+     }
+  }
+  @media(max-width: 425px){
+     .carousel-item img{
+      max-width: 18rem;
+      max-height: 14rem;
+     }
+  }
+  @media(max-width: 576px){
+     .footer-title, .footer-subtitle{
+      margin-left: 1.6rem;
+     }
+     .text-end{
+      margin-right: 0.6rem;
+     }
+  }
+</style>
+<body class="mx-0" style="background-color: var(--backgroundsheet); color: var(--text); font-family: 'Lato', sans-serif;">
+    <nav class="navbar fixed-top rounded-bottom-4" style="background-color: #4d6559;">
+        <div class="container-fluid ms-5 me-4 my-2">
+          <a onclick="toTop()" id="top" class="navbar-brand fs-2 fw-semibold" style="color: var(--logo); font-family: 'Belanosima', sans-serif;" href="">CAFFEINN</a>
+          <div class="fa fa-bars fa-2x" style="color: var(--logo); cursor: pointer;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+          </div>
+          <div class="offcanvas offcanvas-end rounded-start-4" style="background-color: var(--background);" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" data-bs-scroll="true">
+            <div class="offcanvas-header mx-2">
+              <div class="fa fa-times fa-2x" style="cursor: pointer; color: var(--logo);" data-bs-dismiss="offcanvas" aria-label="Close"></div>
+              <a class="offcanvas-title fs-5 order-btn px-2 py-1" id="offcanvasLabel" href="#" style="text-decoration: none; color: var(--logo); font-family: 'Belanosima', sans-serif; border: 2.5px solid var(--logodark); border-radius: 5px;">LOG IN</a>
+            </div>
+            <div class="offcanvas-body mx-2" style="font-family: 'Belanosima', sans-serif;">
+              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                <li class="nav-item">
+                  <a class="nav-link fs-4" aria-current="page" href="#products">Our Products</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-4" href="#partners">Our Partners</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link fs-4" href="#footer">Our Communities</a>
+                  </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle fs-4" style="color: var(--logodark);" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Your Orders
+                    </a>
+                    <ul class="dropdown-menu" style="background-color: var(--background); border-color: var(--logodark);">
+                        <li><h6 class="dropdown-header">Deliveries</h6></li>
+                            <li><a class="dropdown-item fs-5" href="#orders">GoFood</a></li>
+                            <li><a class="dropdown-item fs-5" href="#orders">GrabFood</a></li>
+                            <li><a class="dropdown-item fs-5" href="#orders">UberEats</a></li>
+                        <li>
+                            <hr class="dropdown-divider" style="border-color: var(--logodark);">
+                        </li>
+                        <li><h6 class="dropdown-header">Contacts</h6></li>
+                            <li><a class="dropdown-item fs-5" href="#footer">Whatsapp</a></li>
+                            <li><a class="dropdown-item fs-5" href="#footer">Twitter</a></li>
+                            <li><a class="dropdown-item fs-5" href="#footer">Instagram</a></li>
+                        <li>
+                          <hr class="dropdown-divider" style="border-color: var(--logodark);">
+                        </li>
+                        <li><h6 class="dropdown-header">Outlets</h6></li>
+                            <li><a class="dropdown-item fs-5" href="#footer">Get yours straight from the oven!</a></li>
+                    </ul>
+                </li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <section class="rounded-bottom-5 mt-5" style="height: max-content; padding-bottom: 2rem; background-color: var(--background);">
+        <div class="text-center" style="color: var(--logo) ; font-size: 65px; padding-top: 3rem; line-height: 4.5rem;">AN INN OF CAFFEINE
+        </div>
+        <div class="text-center" style="margin-top: 2rem; font-family: 'Belanosima', sans-serif;">
+          <a class="btn order-btn px-4 fs-4" href="#orders">Get Yours!</a>
+          <div id="products"></div>
+        </div>
+      </section>
+
+      <section style="background-color: var(--backgroundsheet); margin-top: 4rem; padding-bottom: 4rem; height: max-content;">
+        <div class="container" style="max-width: 100%;">
+        <div class="row g-0 mx-4 justify-content-center align-items-center">
+        <div id="carousel" class="carousel slide carousel-fade col-lg-4 col-md-12" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+            <button type="button" data-bs-target="#carousel" data-bs-slide-to="5" aria-label="Slide 6"></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="7000">
+              <img src="images/espresso.jpg" class="d-block carousel-menu" alt="Espresso Coffee">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Espresso</h5>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="7000">
+              <img src="images/black-tea.jpg" class="d-block carousel-menu" alt="Black Tea">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Black Tea</h5>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="7000">
+              <img src="images/matcha-tea.jpeg" class="d-block carousel-menu" alt="Matcha Tea">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Matcha Tea</h5>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="7000">
+              <img src="images/americano.jpg" class="d-block carousel-menu" alt="Americano Coffee">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Americano</h5>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="7000">
+              <img src="images/latte.png" class="d-block carousel-menu" alt="Latte Coffee">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Latte</h5>
+              </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="7000">
+              <img src="images/green-tea.jpg" class="d-block carousel-menu" alt="Green Tea">
+              <div class="carousel-caption d-none d-md-block">
+                <h5>Green Tea</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 col-md-12 d-grid products-con">
+          <p class="fw-semibold mb-2 products-title" style="color: var(--background); font-size: 3.5rem;">OUR PRODUCTS</p>
+          <div class="container">
+            <div class="row g-0 products-row">
+              <div class="col-lg-6">
+                <p class="fs-2 products-subtitle" style="font-family: 'Belanosima', sans-serif; color: var(--background);">COFFEE</p>
+                <div class="row g-0">
+                  <p class="fs-4 col-8" style="font-family: 'Belanosima', sans-serif; color: var(--background);">Espresso</p>
+                  <p class="fs-4 col-4 products-price" style="font-family: 'Squada One', cursive; color: var(--background);">$1</p>
+                </div>
+                <div class="row g-0">
+                  <p class="fs-4 col-8" style="font-family: 'Belanosima', sans-serif; color: var(--background);">Latte</p>
+                  <p class="fs-4 col-4 products-price" style="font-family: 'Squada One', cursive; color: var(--background);">$3</p>
+                </div>
+                <div class="row g-0">
+                  <p class="fs-4 col-8" style="font-family: 'Belanosima', sans-serif; color: var(--background);">Americano</p>
+                  <p class="fs-4 col-4 products-price" style="font-family: 'Squada One', cursive; color: var(--background);">$5</p>
+                </div>
+                <div class="row g-0">
+                  <p class="fs-4 col-8" style="font-family: 'Belanosima', sans-serif; color: var(--background);">Cappucino</p>
+                  <p class="fs-4 col-4 products-price" style="font-family: 'Squada One', cursive; color: var(--background);">$7</p>
+                </div>
+                <div class="row g-0">
+                  <p class="fs-4 col-8" style="font-family: 'Belanosima', sans-serif; color: var(--background);">Mocha</p>
+                  <p class="fs-4 col-4 products-price" style="font-family: 'Squada One', cursive; color: var(--background);">$9</p>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <p class="fs-2 products-subtitle" style="font-family: 'Belanosima', sans-serif; color: var(--background);">TEA</p>
+                <div class="row g-0">
+                  <p class="fs-4 col-8" style="font-family: 'Belanosima', sans-serif; color: var(--background);">Black Tea</p>
+                  <p class="fs-4 col-4 products-price" style="font-family: 'Squada One', cursive; color: var(--background);">$2</p>
+                </div>
+                <div class="row g-0">
+                  <p class="fs-4 col-8" style="font-family: 'Belanosima', sans-serif; color: var(--background);">White Tea</p>
+                  <p class="fs-4 col-4 products-price" style="font-family: 'Squada One', cursive; color: var(--background);">$4</p>
+                </div>
+                <div class="row g-0">
+                  <p class="fs-4 col-8" style="font-family: 'Belanosima', sans-serif; color: var(--background);">Green Tea</p>
+                  <p class="fs-4 col-4 products-price" style="font-family: 'Squada One', cursive; color: var(--background);">$6</p>
+                </div>
+                <div class="row g-0">
+                  <p class="fs-4 col-8" style="font-family: 'Belanosima', sans-serif; color: var(--background);">Oolong Tea</p>
+                  <p class="fs-4 col-4 products-price" style="font-family: 'Squada One', cursive; color: var(--background);">$8</p>
+                </div>
+                <div class="row g-0">
+                  <p class="fs-4 col-8" style="font-family: 'Belanosima', sans-serif; color: var(--background);">Matcha Tea</p>
+                  <p class="fs-4 col-4 products-price" style="font-family: 'Squada One', cursive; color: var(--background);">$10</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+      </section>
+
+      <section class="rounded-4" style="background-color: var(--background); height: max-content;" id="partners">
+        <h5 class="text-center pt-3" style="color: var(--backgroundsheet); font-size: 1.5rem;">OUR PARTNERS</h5>
+          <div class="container">
+            <div class="row g-0 justify-content-center align-items-center">
+              <img class="col-lg-2 mx-5" style="max-width: 14rem;" src="images/gofood-logo.png" alt="GoFood Delivery">
+              <img class="col-lg-2 mx-5" style="max-width: 14rem;" src="images/grabfood-logo.png" alt="GoFood Delivery">
+              <img class="col-lg-2 mx-5" style="max-width: 14rem;" src="images/ubereats-logo.png" alt="GoFood Delivery">
+            </div>
+          </div>
+      </section>
+
+
+      <section style="background-color: var(--backgroundsheet); padding-bottom: 4rem; height: max-content;" id="orders">
+        <div class="container">
+          <div class="row justify-content-center align-items-center grid row-gap-4">
+            <div class="col-12">
+              <h5 class="text-center mt-5 mb-5 fw-semibold" style="color: var(--background); font-size: 3.5rem;">TAKE YOUR ORDERS</h5>
+            </div>
+            <div class="col-lg-4 col-sm-8">
+              <div class="card rounded-4 order-card" style="background-color: var(--background); height: 100%;">
+                <div class="card-body delivery-card">
+                  <h5 class="card-title fw-semibold" style="font-family: 'Lato', sans-serif;">GoFood</h5>
+                  <h6 class="card-subtitle" style="margin-bottom: 3.4rem; font-family: 'Belanosima', sans-serif;">Instant Food Delivery</h6>
+                  <a href="#" class="card-link" style="font-family: 'Belanosima', sans-serif;">Go</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-8">
+              <div class="card rounded-4 order-card" style="background-color: var(--background); height: 100%;">
+                <div class="card-body delivery-card">
+                  <h5 class="card-title fw-semibold" style="font-family: 'Lato', sans-serif;">GrabFood</h5>
+                  <h6 class="card-subtitle" style="margin-bottom: 3.4rem; font-family: 'Belanosima', sans-serif;">Hot Meal Delivery Service</h6>
+                  <a href="#" class="card-link" style="font-family: 'Belanosima', sans-serif;">Go</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4 col-sm-8">
+              <div class="card rounded-4 order-card" style="background-color: var(--background); height: 100%;">
+                <div class="card-body delivery-card">
+                  <h5 class="card-title fw-semibold" style="font-family: 'Lato', sans-serif;">UberEats</h5>
+                  <h6 class="card-subtitle" style="margin-bottom: 3.4rem; font-family: 'Belanosima', sans-serif;">Food Delivery & Takeout</h6>
+                  <a href="#" class="card-link" style="font-family: 'Belanosima', sans-serif;">Go</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="rounded-top-5" style="background-color: var(--background); padding-top: 2rem; height: max-content;" id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-auto col-sm-12">
+              <h5 class="fw-semibold mb-3 footer-title" style="color: var(--logodark); font-family: 'Lato', sans-serif;">Outlets</h5>
+            </div>
+              <div class="col-2">
+                <div class="dropdown-center">
+                    <a class="dropdown-toggle outlet-drop footer-subtitle" data-bs-toggle="dropdown" aria-expanded="false">Italy</a>
+                    <ul class="dropdown-menu outlet-drop-menu">
+                      <li><a class="dropdown-item outlet-drop-list" href="#">Milano Roastery, Milan</a></li>
+                    </ul>
+                </div>
+                    <br>
+                    <div class="dropdown-center">
+                          <a class="dropdown-toggle outlet-drop footer-subtitle" data-bs-toggle="dropdown" aria-expanded="false">United States</a>
+                          <ul class="dropdown-menu outlet-drop-menu">
+                            <li><a class="dropdown-item outlet-drop-list" href="#">Reserve Roastery, Seattle</a></li>
+                            <li><a class="dropdown-item outlet-drop-list" href="#">Pike Place Market, Seattle</a></li>
+                            <li><a class="dropdown-item outlet-drop-list" href="#">Magnificent Mile, Chicago, Illinois</a></li>
+                            <li><a class="dropdown-item outlet-drop-list" href="#">Gilmore Gas Station, Los Angeles</a></li>
+                            <li><a class="dropdown-item outlet-drop-list" href="#">Ketchum, Idaho</a></li>
+                          </ul>
+                    </div>
+                        <br>
+                <div class="dropdown-center">
+                      <a class="dropdown-toggle outlet-drop footer-subtitle" data-bs-toggle="dropdown" aria-expanded="false">Japan</a>
+                      <ul class="dropdown-menu outlet-drop-menu">
+                        <li><a class="dropdown-item outlet-drop-list" href="#">Kyoto Ninenzaka Yasaka Chayaten, Kyoto</a></li>
+                        <li><a class="dropdown-item outlet-drop-list" href="#">Dazaifu Tenmangu Omotesando, Fukuoka</a></li>
+                        <li><a class="dropdown-item outlet-drop-list" href="#">Yomiuriland, Tokyo</a></li>
+                        <li><a class="dropdown-item outlet-drop-list" href="#">Tokyo Roastery, Tokyo</a></li>
+                      </ul>
+                </div>
+                    <br>
+                <div class="dropdown-center">
+                      <a class="dropdown-toggle outlet-drop footer-subtitle" data-bs-toggle="dropdown" aria-expanded="false">South Korea</a>
+                      <ul class="dropdown-menu outlet-drop-menu">
+                        <li><a class="dropdown-item outlet-drop-list" href="#">Fammile Park, Seoul</a></li>
+                        <li><a class="dropdown-item outlet-drop-list" href="#">Starbucks Wave, Seoul</a></li>
+                      </ul>
+                </div>
+                    <br>
+              </div>
+              <div class="col-lg-auto col-sm-12">
+                <h5 class="fw-semibold mb-3 footer-title" style="color: var(--logodark); font-family: 'Lato', sans-serif;">Contacts</h5>
+              </div>
+                <div class="col-2">
+                  <div>
+                    <a class="contact-drop footer-subtitle" href="#">Whatsapp</a>
+                  </div>
+                  <br>
+                  <div>
+                    <a class="contact-drop footer-subtitle" href="#">Twitter</a>
+                  </div>
+                  <br>
+                  <div>
+                    <a class="contact-drop footer-subtitle" href="#">Instagram</a>
+                  </div>
+                  <br>
+                </div>
+                <div class="col-lg-auto col-sm-12">
+                  <h5 class="fw-semibold mb-3 footer-title" style="color: var(--logodark); font-family: 'Lato', sans-serif;">Communities</h5>
+                </div>
+                <div class="col-2">
+                  <div>
+                    <a class="contact-drop footer-subtitle" href="#">Youtube</a>
+                  </div>
+                  <br>
+                  <div>
+                    <a class="contact-drop footer-subtitle" href="#">Reddit</a>
+                  </div>
+                  <br>
+                  <div>
+                    <a class="contact-drop footer-subtitle" href="#">Threads</a>
+                  </div>
+                  <br>
+                </div>
+                <div class="align-self-end">
+                  <h5 class="mb-3 text-end" style="color: var(--logodark); font-family: 'Squada One', cursive; font-size: 18.5px;"><i class="fa fa-copyright" aria-hidden="true"></i> 2023 <span class="fw-semibold" style="font-family: 'Belanosima', sans-serif; font-size: 17px;">CAFFEINN</span></h5>
+                </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+        
+    <script>
+      let topButton = document.getElementById("top");
+      function toTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>
