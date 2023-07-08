@@ -1,5 +1,5 @@
 # CafeINN
-A simple website landing page made with bootstrap 5.3 framework
+A simple website landing page made with **Bootsrap _5.3_**
 
 see it here:
-https://caffeinn.netlify.app/
+[CafeINN Website Preview](https://caffeinn.netlify.app/)
