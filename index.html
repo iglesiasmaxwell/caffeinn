@@ -150,8 +150,8 @@
      }
      .products-title{
       margin-top: 2rem;
-      display: flex;
-      justify-self: center;
+      /* display: flex;
+      justify-self: center; */
       text-align: center;
     }
     .products-subtitle{
@@ -176,6 +176,21 @@
      .carousel-item img{
       max-width: 18rem;
       max-height: 14rem;
+     }
+  }
+  @media(max-width: 369px){
+     .carousel-item img{
+      max-width: 16rem;
+      max-height: 12rem;
+     }
+  }
+  @media(max-width: 345px){
+     .carousel-item img{
+      max-width: 14rem;
+      max-height: 12rem;
+     }
+     .carousel-indicators{
+      margin: 10px 3px;
      }
   }
   @media(max-width: 576px){
@@ -299,7 +314,7 @@
           </div>
         </div>
         <div class="col-lg-6 col-md-12 d-grid products-con">
-          <p class="fw-semibold mb-2 products-title" style="color: var(--background); font-size: 3.5rem;">OUR PRODUCTS</p>
+          <p class="fw-semibold mb-2 products-title" style="color: var(--background); font-size: 3rem;">OUR PRODUCTS</p>
           <div class="container">
             <div class="row g-0 products-row">
               <div class="col-lg-6">
